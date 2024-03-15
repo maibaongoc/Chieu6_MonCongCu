@@ -6,7 +6,7 @@
     <title>Login</title>
 </head>
 <body>
-    <form action="/action_page.php" method="post">
+    <form id="loginForm" action="/action_page.php" method="post">
   
         <div class="container">
           <label for="uname"><b>Ten dang nhap</b></label>
@@ -16,5 +16,24 @@
           <button type="submit">Dang Nhap</button>
          
       </form>
+      <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            // Ngăn chặn việc gửi form mặc định
+            event.preventDefault();
+
+            // Lấy giá trị nhập từ form
+            var username = document.getElementById("loginForm").elements["uname"].value;
+            var password = document.getElementById("loginForm").elements["pass"].value;
+
+            // Kiểm tra thông tin đăng nhập
+            if (username === "admin" && password === "admin") {
+                // Đăng nhập thành công, chuyển hướng đến trang đăng nhập thành công
+                window.location.href = "login_success.html";
+            } else {
+                // Đăng nhập không thành công, thông báo lỗi
+                alert("Tên đăng nhập hoặc mật khẩu không đúng!");
+            }
+        });
+    </script>
 </body>
 </html>
